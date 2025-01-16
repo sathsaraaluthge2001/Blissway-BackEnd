@@ -93,6 +93,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- Firebase Admin SDK -->
+		<!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-admin -->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>9.4.3</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
