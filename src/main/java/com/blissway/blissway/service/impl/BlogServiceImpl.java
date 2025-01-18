@@ -3,40 +3,52 @@ package com.blissway.blissway.service.impl;
 import com.blissway.blissway.entity.Blog;
 import com.blissway.blissway.repository.BlogRepository;
 import com.blissway.blissway.service.BlogService;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class BlogServiceImpl implements BlogService {
 
+    private static final Logger logger = LoggerFactory.getLogger(BlogServiceImpl.class);
     private final BlogRepository blogRepository;
 
-    @Autowired
     public BlogServiceImpl(BlogRepository blogRepository) {
         this.blogRepository = blogRepository;
     }
 
     @Override
-    public Blog createBlog(Blog blog) {
-        return blogRepository.save(blog); // Using JpaRepository's save method
+    public List<Blog> getAllBlogs() {
+        logger.info("Fetching all blogs");
+        return blogRepository.findAll();
     }
 
     @Override
     public Blog getBlogById(String id) {
-        return blogRepository.findById(id) // Using JpaRepository's findById method
+        logger.info("Fetching blog with id: {}", id);
+        return blogRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Blog not found with id: " + id));
     }
 
     @Override
-    public List<Blog> getAllBlogs() {
-        return blogRepository.findAll(); // Using JpaRepository's findAll method
+    public Blog createBlog(Blog blog) {
+        logger.info("Creating new blog: {}", blog);
+        return blogRepository.save(blog);
+    }
+
+    @Override
+    public Blog updateBlog(Blog blog) {
+//        logger.info("Updating blog with id: {}" , blog.getId());
+        return blogRepository.save(blog);
     }
 
     @Override
     public void deleteBlog(String id) {
-        blogRepository.deleteById(id); // Using JpaRepository's deleteById method
+        logger.info("Deleting blog with id: {}", id);
+        blogRepository.deleteById(id);
     }
 }

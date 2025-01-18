@@ -8,4 +8,5 @@ public interface BlogService {
     Blog getBlogById(String id);
     List<Blog> getAllBlogs();
     void deleteBlog(String id);
+    Blog updateBlog(Blog blog);
 }
