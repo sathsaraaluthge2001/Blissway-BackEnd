@@ -45,6 +45,7 @@ public class Blog {
     @Embedded
     private MoreLink moreLink;
 
+
     private String miniTitle;
 
     @Column(length = 5000)
