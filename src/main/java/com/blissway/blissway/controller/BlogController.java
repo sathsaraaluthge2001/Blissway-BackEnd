@@ -1,7 +1,6 @@
 package com.blissway.blissway.controller;
 
 import com.blissway.blissway.dto.BlogDto;
-import com.blissway.blissway.entity.Blog;
 import com.blissway.blissway.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
